@@ -34,7 +34,9 @@ def dynamic_loader(directory):
                 continue
 
             # Load all changed and new files.
-            if last_modified.get(full_path, None) != os.path.getmtime(full_path):
+            modified_time = os.path.getmtime(full_path)
+            if last_modified.get(full_path, None) != modified_time:
+                last_modified[full_path] = modified_time
                 load_file(full_path)
 
 
