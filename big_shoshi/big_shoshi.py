@@ -11,6 +11,7 @@ def get_module_name_from_path(path):
 def load_file(file_path):
     module_name = get_module_name_from_path(file_path)
 
+    # Taken from: https://docs.python.org/3/library/importlib.html#importing-a-source-file-directly
     spec = importlib.util.spec_from_file_location(module_name, file_path)
     module = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = module
