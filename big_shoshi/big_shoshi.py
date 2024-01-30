@@ -47,8 +47,9 @@ def dynamic_loader(directory):
 
 def main():
     assert len(sys.argv) == 2, "Usage: 'python big_shoshi.py <modules_dir>'"
+    directory = sys.argv[1]
 
-    t = threading.Thread(target=dynamic_loader, args=[sys.argv[1]])
+    t = threading.Thread(target=dynamic_loader, args=[directory])
     
     # This is important so the main thread won't have to wait until this thread dies to quit.
     t.daemon = True
