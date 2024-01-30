@@ -1,6 +1,11 @@
-import threading, IPython, time, importlib.util, sys, os
+import importlib.util
+import IPython
+import os
+import threading
+import time
+import sys
 
-WAIT_TIME = 0.1
+SECONDS_TO_WAIT = 0.1
 
 
 def get_module_name_from_path(path):
@@ -24,7 +29,7 @@ def load_file(file_path):
 def dynamic_loader(directory):
     last_modified = dict()
     while True:
-        time.sleep(WAIT_TIME)
+        time.sleep(SECONDS_TO_WAIT)
         for file_path in os.listdir(directory):
             # Important since os.listdir returns path relative to the directory
             full_path = os.path.join(directory, file_path)
